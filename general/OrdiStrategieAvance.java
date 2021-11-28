@@ -43,7 +43,7 @@ public class OrdiStrategieAvance extends StrategieOrdiAbstrait{
 	 * Constructeur par d�faut
 	 * 
 	 */
-	public OrdiStrategieAvance(){
+	public  OrdiStrategieAvance(){
 		
 		// Une file vide au d�part.
 		fileCoupAJoue = new LinkedList<Coord>();

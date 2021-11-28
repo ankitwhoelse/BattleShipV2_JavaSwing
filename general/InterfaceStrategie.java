@@ -16,7 +16,8 @@ public interface InterfaceStrategie {
 	// (getTir, aviserTouche et resetTirsJoues)
 
 
-
-    public String getTir();
+     Coord getTir();
+     void aviseTouche(Coord c);
+     void resetTirsJoues();
 	
 }

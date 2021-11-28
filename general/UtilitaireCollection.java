@@ -18,7 +18,7 @@ public class UtilitaireCollection {
 		 *                                 
 		 * @return Un tir qui ne fait pas partie de la collection.
 		 */
-		public static 
+		public static
 		         Coord obtenirCoupPasDejaJouer (AbstractList<Coord> collection){
 
 			Coord c;
@@ -43,7 +43,7 @@ public class UtilitaireCollection {
 		 * @return Si une coordonn�es dans la collection correspond � c.
 		 */
 
-		public static 
+		public  static
 		       boolean collectionContientCoord(AbstractList <Coord> collection, 
 			                                   Coord c){
 			
