@@ -1,12 +1,14 @@
 package general;
 
-public class Participant implements InterfaceParticipant{
+public class Participant implements InterfaceParticipant {
 
     private Flotte flotte;
+
     @Override
     public void genereNouvelleFlotte() {
         flotte = flotte.obtenirFlotteAleatoire();
     }
+
     @Override
     public Flotte getFlotte() {
         return flotte;

@@ -17,7 +17,7 @@ public interface InterfaceOrdi {
 	 * 
 	 * @return La strat�gie de l'ordi.
 	 */
-	public InterfaceStrategie getStrategie() ;
+	public InterfaceStrategie getStrategie();
 
 	/**
 	 * Mutateur de la strat�gie.

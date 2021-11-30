@@ -51,6 +51,7 @@ public class StrategieOrdiAbstrait  implements InterfaceStrategie{
 	public void aviseTouche(Coord c) {
 
 	}
+
 	@Override
 	public void resetTirsJoues() {
 		tabTirsJoues.clear();

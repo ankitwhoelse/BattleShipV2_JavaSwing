@@ -4,6 +4,7 @@ import general.Joueur;
 import general.Ordi;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class PanneauPrincipal extends JFrame implements Runnable{
@@ -12,15 +13,16 @@ public class PanneauPrincipal extends JFrame implements Runnable{
 
     Joueur joueur = new Joueur("Joueur1");
     Ordi ordi = new Ordi();
+
     PanneauHaut panHaut = new PanneauHaut(joueur,ordi);
 
+    BarreMenu menu = new BarreMenu();
 
     @Override
     public void run() {
 
         configurerCadre();
         configurerContenu();
-
         setVisible(true);
     }
 
@@ -29,20 +31,18 @@ public class PanneauPrincipal extends JFrame implements Runnable{
         setTitle("PanneauHaut");
 
         setSize(new Dimension(1200,700));
-
+        setResizable(false);
+        setJMenuBar(menu);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void configurerContenu() {
-
+        // Panneau Principal
         setContentPane(panPrincipal);
-        panPrincipal.setBackground(Color.RED);
-        panPrincipal.setLayout(new BorderLayout());
+        panPrincipal.setBackground(Color.lightGray);
+        panPrincipal.setLayout(new FlowLayout());
 
-
-      //  panPrincipal.add(panHaut, BorderLayout.PAGE_START);
+        panPrincipal.add(panHaut);
     }
-
-
 
 }

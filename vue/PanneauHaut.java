@@ -26,9 +26,6 @@ public class PanneauHaut extends JPanel implements ActionListener {
         configurerPanneau();
         configurerContenu();
 
-
-
-
     }
 
     @Override
@@ -42,6 +39,8 @@ public class PanneauHaut extends JPanel implements ActionListener {
         // A VERIFIER
         double height = (d.height * 0.6) / 3;
         double width = (d.width * 0.6) / 3;
+
+        JLabel lbl1 = new JLabel("panneau flotte 1");
         panneauFlotte1 = new PanneauGrilleGui(new Dimension((int)width,(int)height));
 
         panneauFlotte2 = new PanneauGrilleGui(new Dimension((int)width,(int)height));
@@ -54,8 +53,9 @@ public class PanneauHaut extends JPanel implements ActionListener {
         setLayout(new BorderLayout());
 
 
-        add(panneauFlotte1,BorderLayout.CENTER);
-        add(panneauFlotte2,BorderLayout.CENTER);
+        add(panneauFlotte1,BorderLayout.WEST);
+
+        add(panneauFlotte2,BorderLayout.EAST);
 
     }
 }
