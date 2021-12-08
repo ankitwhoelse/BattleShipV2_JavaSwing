@@ -1,5 +1,6 @@
 package general;
 
+import vue.CadrePrincipal;
 import vue.PanneauPrincipal;
 
 import javax.swing.*;
@@ -7,8 +8,8 @@ import javax.swing.*;
 public class ProgrammePrincipal {
 
     public static void main(String[] args) {
-        PanneauPrincipal cadre = new PanneauPrincipal();
-        SwingUtilities.invokeLater(cadre);
-        cadre.run();
+
+        SwingUtilities.invokeLater(new PanneauPrincipal());
+
     }
 }
