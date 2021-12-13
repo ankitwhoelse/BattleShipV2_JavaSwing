@@ -128,11 +128,25 @@ public class PanneauHaut extends JPanel{
 
     public void reinitialiserPanneauOrdi(){
 
+        UtilitaireGrilleGui.reinitialiserGui(panneauFlotteOrdi);
+
         panneauFlotteOrdi.resetEstClique();
         ordi.genereNouvelleFlotte();
         panneauFlotteOrdi.reactiverCases();
-        panneauFlotteOrdiCopie.reactiverCases();
+
+        if(panneauFlotteOrdiCopie != null){
+            panneauFlotteOrdiCopie.reactiverCases();
+        }
+        panneauFlotteOrdiCopie = panneauFlotteOrdi.clone();
+
 
     }
+
+    public void viderCases() {
+        UtilitaireGrilleGui.reinitialiserGui(panneauFlotteOrdi);
+        UtilitaireGrilleGui.reinitialiserGui(panneauFlotteJoueur);
+    }
+
+
 
 }

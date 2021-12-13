@@ -16,7 +16,6 @@ public class BarreMenu extends JMenuBar implements ActionListener {
     }
 
     private void configurerContenu() {
-        JMenuBar barMenu = new JMenuBar();
 
         menu = new JMenu("Stratégie");
 
@@ -28,7 +27,7 @@ public class BarreMenu extends JMenuBar implements ActionListener {
         menu.add(inter);
         menu.add(avanc);
 
-        barMenu.add(menu);
+        this.add(menu);
     }
 
 
@@ -36,6 +35,8 @@ public class BarreMenu extends JMenuBar implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
 
         if (actionEvent.getActionCommand().equals("Débutant")) {
+
+
 
         } else if (actionEvent.getActionCommand().equals("Intermédiaire")) {
 

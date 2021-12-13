@@ -19,7 +19,6 @@ public class PanneauPrincipal extends JFrame implements Runnable{
     PanneauBas panBas = new PanneauBas(panHaut);
 
     BarreMenu menu = new BarreMenu();
-
     @Override
     public void run() {
          Modele.getInstance().attacherObserver(panBas);
@@ -35,6 +34,7 @@ public class PanneauPrincipal extends JFrame implements Runnable{
 
         setSize(new Dimension(1200,700));
         setResizable(false);
+
         setJMenuBar(menu);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
