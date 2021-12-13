@@ -1,5 +1,7 @@
 package general;
 
+import modele.Modele;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -69,15 +71,15 @@ public class PanneauGrilleGui  extends JPanel{
 	private Dimension dim;
 	
 	PanneauGrilleGui self;
+
 	
 	/**
 	 * Crée une grille selon les dimensions reçues.
-	 * 
-	 * @param dim En pixels
+	 *  @param dim En pixels
+	 *
 	 */
 	public PanneauGrilleGui(Dimension dim){
-		
-		
+
 		// On retient la taille et les couleurs de la grille.
 		this.nbLignes = (nbLignes>MAX_LIGNES)
 				?MAX_LIGNES
@@ -91,7 +93,7 @@ public class PanneauGrilleGui  extends JPanel{
 		this.couleurTexte = Color.BLACK;
 
 		this.dim = dim;
-		
+
 		// On crée le tableau 2D (vide).
 		grille = new MonJButton[nbLignes][nbColonnes];
 
@@ -137,7 +139,7 @@ public class PanneauGrilleGui  extends JPanel{
 	
 	/**
 	 * Retourne la valeur contenue dans une case
-	 * @param coord La position de la case désirée.
+	 * @param c La position de la case désirée.
 	 * 
 	 * @return
 	 */
@@ -149,7 +151,7 @@ public class PanneauGrilleGui  extends JPanel{
 	/**
 	 * Permet de modifier la valeur d'une case de la grille.
 	 * 
-	 * @param coord La position de la case désirée.
+	 * @param c La position de la case désirée.
 	 * @param valeur La nouvelle valeur.
 	 */
 	public void setValeur(Coord c, String valeur){
@@ -180,8 +182,8 @@ public class PanneauGrilleGui  extends JPanel{
 	/**
 	 * Permet de changer la couleur de fond d'une case.
 	 * 
-	 * @param coord La position de la case
-	 * @param couleur La nouvelle couleur
+	 * @param c La position de la case
+	 * @param couleurFond La nouvelle couleur
 	 */
 	public void setCouleurFond(Coord c, Color couleurFond){
 		
@@ -191,8 +193,8 @@ public class PanneauGrilleGui  extends JPanel{
 	/**
 	 * Permet de changer la couleur de texte d'une case.
 	 * 
-	 * @param coord La position de la case
-	 * @param couleur La nouvelle couleur
+	 * @param c La position de la case
+	 * @param couleurTexte La nouvelle couleur
 	 */
 	public void setCouleurTexte(Coord c, Color couleurTexte){
 		
@@ -217,8 +219,7 @@ public class PanneauGrilleGui  extends JPanel{
 	
 	/**
 	 * Le clic de cette case n'a plus d'effet
-	 * @param x
-	 * @param ligne
+	 * @param c
 	 */
 	public void desactiverCase(Coord c){
 		
@@ -307,8 +308,8 @@ public class PanneauGrilleGui  extends JPanel{
 
 		/**
 		 * Constructeur avec la position du bouotn et sa valeur.
-		 * @param y La position en ligne
-		 * @param x La position en colonne
+		 * @param ligne La position en ligne
+		 * @param colonneF La position en colonne
 		 * @param valeur La valeur à afficher
 		 */
 		private MonJButton(int ligne, int colonne, String valeur,
@@ -339,8 +340,9 @@ public class PanneauGrilleGui  extends JPanel{
 					dernierClic = new Coord();
 					dernierClic.ligne = b.ligne;
 					dernierClic.colonne = b.colonne;					
-					estClique = true;		
-				}	
+					estClique = true;
+					Modele.getInstance().setClick(dernierClic);
+				}
 		}
 	}
 }

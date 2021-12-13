@@ -1,41 +1,34 @@
 package vue;
 
 import general.*;
-import modele.PanneauHautModele;
+import modele.Modele;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class PanneauHaut extends JPanel implements ActionListener {
+
+public class PanneauHaut extends JPanel{
 
     JPanel panelJoueur = new JPanel();
     JPanel panelOrdi = new JPanel();
 
     PanneauGrilleGui panneauFlotteJoueur;
 
-    PanneauGrilleGui panneauFlotteOrdi ;
+    PanneauGrilleGui panneauFlotteOrdi;
+
+    PanneauGrilleGui panneauFlotteOrdiCopie;
 
     PanneauGrilleGui panneauMontrerFlotte ;
     Joueur joueur ;
     Ordi ordi;
-    PanneauHautModele modele = PanneauHautModele.getInstance();
 
 
     PanneauHaut(Joueur joueur, Ordi ordi){
         this.joueur = joueur;
         this.ordi = ordi;
-
         configurerPanneau();
         configurerContenu();
 
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        System.out.println(panneauFlotteJoueur.getPosition());
     }
 
     public void configurerPanneau() {
@@ -51,7 +44,7 @@ public class PanneauHaut extends JPanel implements ActionListener {
 
 
         panelJoueur.setLayout(new BoxLayout(panelJoueur, BoxLayout.Y_AXIS));
-        panneauFlotteJoueur = new PanneauGrilleGui(new Dimension((int)width,(int)height));
+        panneauFlotteJoueur = new PanneauGrilleGui(new Dimension((int)width,(int)height) );
         panelJoueur.add(lbl1);
         panelJoueur.add(panneauFlotteJoueur);
 
@@ -61,24 +54,15 @@ public class PanneauHaut extends JPanel implements ActionListener {
         panelOrdi.add(lbl2);
         panelOrdi.add(panneauFlotteOrdi);
 
-        panneauMontrerFlotte = new PanneauGrilleGui(new Dimension((int)width,(int)height));
+   //     panneauMontrerFlotte = new PanneauGrilleGui(new Dimension((int)width,(int)height));
     }
 
     public void configurerContenu() {
 
         setLayout(new BorderLayout());
 
-        joueur.genereNouvelleFlotte();
-        Flotte flotteJoueur = joueur.getFlotte();
-
-        modele.GrilleFlotte(flotteJoueur,panneauFlotteJoueur);
-
-        ordi.genereNouvelleFlotte();
-        Flotte flotteOrdi = ordi.getFlotte();
-        modele.GrilleFlotte(flotteOrdi,panneauFlotteOrdi);
 
         add(panelJoueur,BorderLayout.WEST);
-
         add(panelOrdi,BorderLayout.EAST);
 
     }
@@ -102,17 +86,28 @@ public class PanneauHaut extends JPanel implements ActionListener {
     //3.2.6 Les méthodes utiles au déroulement du jeu
 
     public void AfficherTirJoueur(Coord tir){
-        panneauFlotteJoueur.setValeur(tir, Constantes.TOUCHE);
+
+        panneauFlotteOrdi.setValeur(tir, Constantes.TOUCHE);
+        panneauFlotteOrdiCopie.setValeur(tir, Constantes.TOUCHE);
+        desactiverCaseOrdi(tir);
+
+        if(ordi.flotteARecuTirQuiATouche(tir)){
+            caseToucheOrdi(tir);
+        }
+
     }
 
     public void AfficherTirOrdi(Coord tir){
-        panneauFlotteOrdi.setValeur(tir, Constantes.TOUCHE);
+        panneauFlotteJoueur.setValeur(tir, Constantes.TOUCHE);
     }
+
     public void caseToucheJoueur(Coord tir){
         panneauFlotteJoueur.setCouleurFond(tir, Constantes.COULEUR_LIGNE_IDENTIQUE);
     }
     public void caseToucheOrdi(Coord tir){
         panneauFlotteOrdi.setCouleurFond(tir, Constantes.COULEUR_LIGNE_IDENTIQUE);
+        panneauFlotteOrdiCopie.setCouleurFond(tir, Constantes.COULEUR_LIGNE_IDENTIQUE);
+
     }
 
     public void montreFlotteJoueur(){
@@ -120,14 +115,24 @@ public class PanneauHaut extends JPanel implements ActionListener {
     }
     public void montreFlotteOrdi(){
         UtilitaireGrilleGui.montrerFlotte(ordi.getFlotte(),panneauFlotteOrdi);
+
     }
+    public void cacherFlotteOrdi(){
+        panneauFlotteOrdi.copierEtatCases(panneauFlotteOrdiCopie);
+    }
+
     public void desactiverCaseOrdi(Coord tir){
         panneauFlotteOrdi.desactiverCase(tir);
+        panneauFlotteOrdiCopie.desactiverCase(tir);
     }
 
-    public void reinitialiserPanneauOrdi(Coord tir){
-     //  panneauFlotteOrdi = new PanneauGrilleGui();
-    }
+    public void reinitialiserPanneauOrdi(){
 
+        panneauFlotteOrdi.resetEstClique();
+        ordi.genereNouvelleFlotte();
+        panneauFlotteOrdi.reactiverCases();
+        panneauFlotteOrdiCopie.reactiverCases();
+
+    }
 
 }
