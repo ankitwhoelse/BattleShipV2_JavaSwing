@@ -19,6 +19,7 @@ public class PanneauHaut extends JPanel{
     PanneauGrilleGui panneauFlotteOrdiCopie;
 
     PanneauGrilleGui panneauMontrerFlotte ;
+
     Joueur joueur ;
     Ordi ordi;
 
@@ -61,10 +62,8 @@ public class PanneauHaut extends JPanel{
 
         setLayout(new BorderLayout());
 
-
         add(panelJoueur,BorderLayout.WEST);
         add(panelOrdi,BorderLayout.EAST);
-
     }
 
     public Joueur getJoueur() {
@@ -99,6 +98,11 @@ public class PanneauHaut extends JPanel{
 
     public void AfficherTirOrdi(Coord tir){
         panneauFlotteJoueur.setValeur(tir, Constantes.TOUCHE);
+
+
+        if (joueur.flotteARecuTirQuiATouche(tir)) {
+            caseToucheJoueur(tir);
+        }
     }
 
     public void caseToucheJoueur(Coord tir){

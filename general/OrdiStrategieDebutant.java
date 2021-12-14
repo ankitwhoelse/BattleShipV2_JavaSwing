@@ -25,7 +25,7 @@ public class OrdiStrategieDebutant extends StrategieOrdiAbstrait{
 				
 		// Ajoute le tir dans le tirs jou� du parent.
 		super.ajouterTir(c);
-		
+		System.out.print(c);
 		return c; 
 		
 	}

@@ -1,27 +1,60 @@
 package vue;
 
+import general.InterfaceStrategie;
+import general.OrdiStrategieAvance;
+import general.OrdiStrategieDebutant;
+import general.OrdiStrategieIntermediaire;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class BarreMenu extends JMenuBar implements ActionListener {
+public class BarreMenu extends JMenuBar implements ActionListener{
 
     JMenu menu;
     JMenuItem deb, inter, avanc;
+    PanneauPrincipal panneauPrincipal;
 
-    public BarreMenu() {
-
+    public BarreMenu(PanneauPrincipal panneauPrincipal) {
+        this.panneauPrincipal = panneauPrincipal;
         configurerContenu();
         setVisible(true);
     }
 
     private void configurerContenu() {
 
-        menu = new JMenu("Stratégie");
+        menu = new JMenu("Strategie");
 
-        deb = new JMenuItem("Débutant");
-        inter = new JMenuItem("Intermédiaire");
-        avanc = new JMenuItem("Avancé");
+        deb = new JMenuItem("Debutant");
+        deb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JOptionPane.showMessageDialog(menu.getParent(), "La strategie de l'ordi est: "
+                        + e.getActionCommand());
+            }
+        });
+
+        inter = new JMenuItem("Intermediaire");
+        deb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                JOptionPane.showMessageDialog(menu.getParent(), "La strategie de l'ordi est: "
+                        + e.getActionCommand());
+            }
+        });
+
+        avanc = new JMenuItem("Avance");
+        avanc.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JOptionPane.showMessageDialog(menu.getParent(), "La strategie de l'ordi est: "
+                        + e.getActionCommand());
+            }
+        });
 
         menu.add(deb);
         menu.add(inter);
@@ -31,19 +64,17 @@ public class BarreMenu extends JMenuBar implements ActionListener {
     }
 
 
-    @Override
+
     public void actionPerformed(ActionEvent actionEvent) {
-
-        if (actionEvent.getActionCommand().equals("Débutant")) {
-
-
-
-        } else if (actionEvent.getActionCommand().equals("Intermédiaire")) {
-
-        } else if (actionEvent.getActionCommand().equals("Avancé")) {
-
+        System.out.println("qqch ");
+        if (actionEvent.getActionCommand().equals("Debutant")) {
+           // panneauPrincipal.panBas.actionPerformed(new ActionEvent(this, "Nouvelle partie")) .ordi.setStrategie((InterfaceStrategie) new OrdiStrategieDebutant());
+        } else if (actionEvent.getActionCommand().equals("Intermediaire")) {
+            panneauPrincipal.ordi.setStrategie((InterfaceStrategie) new OrdiStrategieIntermediaire());
+        } else if (actionEvent.getActionCommand().equals("Avance")) {
+            panneauPrincipal.ordi.setStrategie((InterfaceStrategie) new OrdiStrategieAvance());
         }
 
-
     }
+
 }

@@ -17,7 +17,7 @@ public interface InterfaceStrategie {
 
 
      Coord getTir();
-     void aviseTouche(Coord c);
+     void aviseTouche();
      void resetTirsJoues();
 	
 }

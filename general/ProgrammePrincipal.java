@@ -1,6 +1,6 @@
 package general;
 
-import vue.CadrePrincipal;
+import vue.CadreBatailleNavale;
 import vue.PanneauPrincipal;
 
 import javax.swing.*;
@@ -9,7 +9,7 @@ public class ProgrammePrincipal {
 
     public static void main(String[] args) {
 
-        SwingUtilities.invokeLater(new PanneauPrincipal());
+        SwingUtilities.invokeLater(new CadreBatailleNavale());
 
     }
 }

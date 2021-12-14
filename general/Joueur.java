@@ -1,5 +1,7 @@
 package general;
 
+import vue.CadreBatailleNavale;
+
 /**
  * Classe qui représente un joueur d'une partie de bataille navale
  * 
@@ -14,7 +16,7 @@ public class Joueur extends Participant{
 	 * Stratégie : On conserve les tirs dans un vecteur et les tâches sont 
 	 * déléguées à l'utilitaire de collections.
 	 */
-	private String nom;
+	private String nom = CadreBatailleNavale.getNom();
 	
 	/**
 	 * Constructeur par copie de l'attribut nom.
@@ -23,10 +25,7 @@ public class Joueur extends Participant{
 	 * 
 	 * @param nom
 	 */
-	public Joueur(String nom){		
-		
-		this.nom = nom;
-	}
+	public Joueur(String nom){	}
 
 	
 	/**

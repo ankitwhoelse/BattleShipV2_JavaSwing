@@ -33,7 +33,6 @@ public class StrategieOrdiAbstrait  implements InterfaceStrategie{
 	}
 
 	boolean tirDejaJoue(Coord tir) {
-
 		return UtilitaireCollection.collectionContientCoord(tabTirsJoues,tir);
 	}
 
@@ -41,14 +40,13 @@ public class StrategieOrdiAbstrait  implements InterfaceStrategie{
 		return tabTirsJoues.lastElement();
 	}
 
-
 	@Override
 	public Coord getTir() {
 		return null;
 	}
 
 	@Override
-	public void aviseTouche(Coord c) {
+	public void aviseTouche() {
 
 	}
 
